@@ -9,8 +9,18 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "yuei",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "inquirer": "^8.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjjj9800/ExpressJs_Setup.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "branches": [
+      "master"
+    ]
   }
 }
