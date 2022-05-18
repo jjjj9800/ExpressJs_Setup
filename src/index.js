@@ -6,7 +6,7 @@ const util = require('util');
 const {writeFile, readFile} = require("fs").promises;
 
 (async () => {
-    const {database, graphQL, grpc, webSocket, autoInstallAndUpdate} = await inquirer.prompt([
+    const {database, graphQL, grpc, protobufjs, webSocket, autoInstallAndUpdate} = await inquirer.prompt([
         {
             type: "list",
             message: "Pick Database",
@@ -25,6 +25,12 @@ const {writeFile, readFile} = require("fs").promises;
             type: "confirm",
             message: "import gRPC  (default: N)",
             name: "grpc",
+            default: false
+        },
+        {
+            type: "confirm",
+            message: "import protobuf.js  (default: N)",
+            name: "protobufJs",
             default: false
         },
         {
@@ -110,6 +116,10 @@ const {writeFile, readFile} = require("fs").promises;
 
     if (webSocket) {
         packageData.dependencies['socket.io'] = "^4.5.0";
+    }
+
+    if(protobufjs) {
+        packageData.dependencies['protobufjs'] = "^6.11.2";
     }
 
     const saveData = JSON.stringify(packageData, null, 2);
